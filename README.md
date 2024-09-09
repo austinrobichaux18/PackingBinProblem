@@ -25,7 +25,7 @@ https://stackoverflow.com/questions/2192087/3-dimensional-bin-packing-algorithms
 https://stackoverflow.com/questions/61771700/check-if-rectangle-fits-in-other-rectangle-which-already-contains-rectangles  
 https://cs.stackexchange.com/questions/88499/fitting-different-rectangles-inside-a-rectangle  
 
-Company that uses 3d version:  
+Company that uses 3d version (has nice 3d visual):  
 https://topseng.com/maxload-cargo-load-planning-optimization/  
 Online calculator that does something similar:  
 https://www.engineeringtoolbox.com/smaller-rectangles-within-larger-rectangle-d_2111.html   
