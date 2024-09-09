@@ -6,9 +6,13 @@ This is also considered the 2-dimensional Packing Bin problem.
 The 3-dimensional version of this problem is used for packing shipping containers, mail carriers, and other logisitics.  
 It is similar to the 0/1 Knapsack problem.  
 
+# How to run this application
+To check a file, edit the "InputFile.txt" to contain data you wish to check and run the application. 
+The console will indicate pass or failure. 
+
 # Sources, Similar material, Educational 
 See relevant sources that helped me understand this problem.
-Ultimately none of which gave usable c# code, so I decided to create this applicaiton! 
+Ultimately none of which gave usable c# code, so I decided to create this application!  
 https://en.wikipedia.org/wiki/Cutting_stock_problem  
 https://en.wikipedia.org/wiki/Bin_packing_problem  
 https://en.wikipedia.org/wiki/NP-hardness  
@@ -25,11 +29,6 @@ Company that uses 3d version:
 https://topseng.com/maxload-cargo-load-planning-optimization/  
 Online calculator that does something similar:  
 https://www.engineeringtoolbox.com/smaller-rectangles-within-larger-rectangle-d_2111.html   
-
-# How to run this application
-To check a file, edit the "InputFile.txt" to contain data you wish to check and run the application. 
-The console will indicate pass or failure. 
-
 
 # Original Directions
 We have an input text file where each line specifies the width and the height (in pixels) of an image. 
