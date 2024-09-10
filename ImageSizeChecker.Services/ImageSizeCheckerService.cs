@@ -58,6 +58,10 @@ public class ImageSizeCheckerService
         {
             return true;
         }
+        else if (new BruteForce().DoImagesFit(boundry, sizes))
+        {
+            return true;
+        }
         return false;
     }
 
