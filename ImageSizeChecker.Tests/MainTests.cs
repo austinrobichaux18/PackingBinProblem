@@ -99,12 +99,20 @@ public class MainTests
     #endregion
 
     [Fact]
-    public void StackThreeOntopEachOther_ShouldPass()
+    public void IfOrderByArea_ThenDoesNotFit_ShouldPass()
     {
+        // This is an example that should fit and result in a passing case
+        // However, if you order by area size only, this will fail. Need a robust solution that tries other permutations
+        // If you place 5x5, to the right of 10x10, this should fit 15x1 under them
+        // If you place 5x5 under 10x10, 15x1 wont fit
+        // Inverse is also true ^ 
         var service = new ImageSizeCheckerService();
-        var sizes = new string[] { "15 20", "10 10", "6 4", "15 1" };
 
+        var sizes = new string[] { "15 15", "10 10", "5 5", "1 15" };
         Assert.True(service.DoImagesFit(sizes));
+
+        var sizes2 = new string[] { "15 15", "10 10", "5 5", "15 1" };
+        Assert.True(service.DoImagesFit(sizes2));
     }
 
     [Theory]
