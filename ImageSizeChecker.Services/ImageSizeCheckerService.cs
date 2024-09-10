@@ -46,7 +46,11 @@ public class ImageSizeCheckerService
         {
             return true;
         }
-        else if (new OrderByArea().DoImagesFit(boundry, sizes))
+        else if (new SubdivideArea(SubdivideFavor.Vertical).DoImagesFit(boundry, sizes))
+        {
+            return true;
+        }
+        else if (new SubdivideArea(SubdivideFavor.Horizontal).DoImagesFit(boundry, sizes))
         {
             return true;
         }
