@@ -18,7 +18,7 @@ internal class BruteForce : ISolution
         var i = 0;
         foreach (var size in images.ToList())
         {
-            var image = collage.PlaceImage(size);
+            var image = collage.TryPlaceImage(size);
             if (image != null)
             {
                 images.RemoveAt(i);
@@ -42,7 +42,7 @@ internal class BruteForce : ISolution
         public Collage(Size boundry) => _boundry = boundry;
 
         // returns the image if it fits, null if it doesn't
-        public Image? PlaceImage(Size size)
+        public Image? TryPlaceImage(Size size)
         {
             var x = 0;
             var y = 0;
@@ -56,7 +56,7 @@ internal class BruteForce : ISolution
                         break;
                     }
 
-                    var existingImage = FindIntersectingImage(x, y, size);
+                    var existingImage = GetIntersectingImage(x, y, size);
                     if (existingImage == null)
                     {
                         var image = new Image(size, x, y);
@@ -76,13 +76,12 @@ internal class BruteForce : ISolution
 
         public void RemoveImage(Image image) => Images.Remove(image);
 
-        private Image? FindIntersectingImage(int x, int y, Size size)
+        private Image? GetIntersectingImage(int x, int y, Size size)
         {
             var image = new Image(size, x, y);
-
             foreach (var existingImage in Images)
             {
-                if (ImagesIntersect(existingImage, image))
+                if (DoImagesIntersect(existingImage, image))
                 {
                     return existingImage;
                 }
@@ -91,7 +90,7 @@ internal class BruteForce : ISolution
             return null;
         }
 
-        public bool ImagesIntersect(Image image1, Image image2)
+        public bool DoImagesIntersect(Image image1, Image image2)
         {
             //    RectA.Left < RectB.Right
             // && RectA.Right > RectB.Left
