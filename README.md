@@ -8,6 +8,9 @@ The 2-dimensional version of this problem has uses in fitting images on a page a
 The 3-dimensional version of this problem has uses in packing shipping containers, mail carriers, and other logisitics.  
 It is similar to the 0/1 Knapsack problem.  
 
+This application is NOT an exact decider for this problem. It uses a battery of approximation algorithms instead.  
+A brute force algorithm for this would likely be near n! time complexity or worse.  
+
 # How to run this application
 To check a file, edit the "InputFile.txt" to contain data you wish to check and run the application. 
 The console will indicate pass or failure. 

@@ -1,4 +1,6 @@
-﻿namespace ImageSizeChecker.Services;
+﻿using ImageSizeChecker.Services.Solutions;
+
+namespace ImageSizeChecker.Services;
 
 public class ImageSizeCheckerService
 {
@@ -34,73 +36,21 @@ public class ImageSizeCheckerService
         return DoImagesFit(boundry, images.ToArray());
     }
 
-    // Philosphy:
-    // Order the images by largest area,
-    // look for all possible x,y coords in the boundry box such that if the top-left pixel is place at this location, the whole image can fit to the right and down
-    // For each candidate of ^, we check if all coords of the body of the image is available
-    // Place image if possible, otherwise repeat the above
-    private bool DoImagesFit(Size boundary, Size[] images)
+    private bool DoImagesFit(Size boundry, Size[] sizes)
     {
-        var ordered = images.OrderByDescending(img => img.Area).ToArray();
-        var grid = new bool[boundary.Width, boundary.Height];
-
-        foreach (var image in ordered)
+        // Philosphy: 
+        // This problem's brute force method is likely n! time complexity or greater. It is not at all worth it to do brute force.
+        // There are several approximation algorithms that we opt to try
+        // and combine together in the case of failures to hopefully capture a decent approximation success decision
+        if (new OrderByArea().DoImagesFit(boundry, sizes))
         {
-            var placed = false;
-
-            // Available starting spots that have enough room to fit the full image to the right, starting at the top-left most point of the image
-            for (var x = 0; x <= boundary.Width - image.Width; x++)
-            {
-                for (var y = 0; y <= boundary.Height - image.Height; y++)
-                {
-                    if (CanPlaceImage(image, grid, x, y))
-                    {
-                        PlaceImage(image, grid, x, y);
-                        placed = true;
-                        break;
-                    }
-                }
-                if (placed)
-                {
-                    break;
-                }
-            }
-
-            if (!placed)
-            {
-                // Image doesnt fit
-                return false;
-            }
+            return true;
         }
-
-        return true;
-    }
-
-    private bool CanPlaceImage(Size image, bool[,] grid, int x, int y)
-    {
-        for (var i = x; i < x + image.Width; i++)
+        else if (new OrderByArea().DoImagesFit(boundry, sizes))
         {
-            for (var j = y; j < y + image.Height; j++)
-            {
-                // Check every grid square and make sure its available for the body of the image
-                if (grid[i, j])
-                {
-                    return false;
-                }
-            }
+            return true;
         }
-        return true;
-    }
-
-    private void PlaceImage(Size img, bool[,] grid, int x, int y)
-    {
-        for (var i = x; i < x + img.Width; i++)
-        {
-            for (var j = y; j < y + img.Height; j++)
-            {
-                grid[i, j] = true;
-            }
-        }
+        return false;
     }
 
     #region Validation
