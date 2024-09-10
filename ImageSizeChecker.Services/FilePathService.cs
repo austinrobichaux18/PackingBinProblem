@@ -2,5 +2,5 @@
 public static class FilePathService
 {
     public static string GetFilePath(string fileName)
-        => Directory.GetCurrentDirectory() + "..\\" + "..\\" + "..\\" + "..\\" + fileName;
+        => Directory.GetCurrentDirectory() + "/" + fileName;
 }

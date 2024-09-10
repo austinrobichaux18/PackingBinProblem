@@ -11,11 +11,15 @@
 
   <ItemGroup>
     <None Remove="FailingCases.txt" />
+    <None Remove="FailingCases_Format.txt" />
     <None Remove="PassingCases.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="FailingCases.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FailingCases_Format.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="PassingCases.txt">
