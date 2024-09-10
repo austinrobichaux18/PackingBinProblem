@@ -6,19 +6,19 @@ internal class OrderByArea : ISolution
     // look for all possible x,y coords in the boundry box such that if the top-left pixel is place at this location, the whole image can fit to the right and down
     // For each candidate of ^, we check if all coords of the body of the image is available
     // Place image if possible, otherwise repeat the above
-    public bool DoImagesFit(Size boundary, Size[] images)
+    public bool DoImagesFit(Size boundry, Size[] images)
     {
         var ordered = images.OrderByDescending(img => img.Area).ToArray();
-        var grid = new bool[boundary.Width, boundary.Height];
+        var grid = new bool[boundry.Width, boundry.Height];
 
         foreach (var image in ordered)
         {
             var placed = false;
 
             // Available starting spots that have enough room to fit the full image to the right, starting at the top-left most point of the image
-            for (var x = 0; x <= boundary.Width - image.Width; x++)
+            for (var x = 0; x <= boundry.Width - image.Width; x++)
             {
-                for (var y = 0; y <= boundary.Height - image.Height; y++)
+                for (var y = 0; y <= boundry.Height - image.Height; y++)
                 {
                     if (CanPlaceImage(image, grid, x, y))
                     {

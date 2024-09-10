@@ -99,7 +99,7 @@ public class MainTests
     #endregion
 
     [Fact]
-    public void IfOrderByArea_ThenDoesNotFit_ShouldPass()
+    public void IfOrderByArea_ThenDoesNotFit_HasOneExtremeLength_ShouldPass()
     {
         // This is an example that should fit and result in a passing case
         // However, if you order by area size only, this will fail. Need a robust solution that tries other permutations
@@ -113,6 +113,19 @@ public class MainTests
 
         var sizes2 = new string[] { "15 15", "10 10", "5 5", "15 1" };
         Assert.True(service.DoImagesFit(sizes2));
+    }
+    [Fact]
+    public void IfOrderByArea_ThenDoesNotFit_HasTwoExtremeLengths_ShouldPass()
+    {
+        // This is an example that should fit and result in a passing case
+        // However, if you order by area size only, this will fail. Need a robust solution that tries other permutations
+        // If you place 5x5, to the right of 10x10, this should fit 15x1 under them
+        // If you place 5x5 under 10x10, 15x1 wont fit
+        // Inverse is also true ^ 
+        var service = new ImageSizeCheckerService();
+
+        var sizes = new string[] { "15 15", "10 10", "1 15", "14 1" };
+        Assert.True(service.DoImagesFit(sizes));
     }
 
     [Theory]

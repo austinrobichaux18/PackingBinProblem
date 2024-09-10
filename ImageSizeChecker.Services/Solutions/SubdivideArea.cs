@@ -10,11 +10,11 @@ internal class SubdivideArea : ISolution
     // You will get a series of "empty space" rectangles that you can try to fill. 
     // This has an issue of not being able to re-merge two subdivided rectangles even though visually you can, but should preform quickly on the cases
     // that do qualify. 
-    public bool DoImagesFit(Size boundary, Size[] images)
+    public bool DoImagesFit(Size boundry, Size[] images)
     {
         var imagesList = images.ToList();
 
-        Dfs([boundary], imagesList);
+        Dfs([boundry], imagesList);
         return imagesList.Count == 0;
     }
 

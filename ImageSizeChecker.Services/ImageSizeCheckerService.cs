@@ -54,6 +54,10 @@ public class ImageSizeCheckerService
         {
             return true;
         }
+        else if (new SubdivideAreaComplex().DoImagesFit(boundry, sizes))
+        {
+            return true;
+        }
         return false;
     }
 
@@ -110,3 +114,4 @@ public class ImageSizeCheckerService
     }
     #endregion
 }
+
