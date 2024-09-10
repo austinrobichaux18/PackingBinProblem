@@ -99,10 +99,10 @@ public class MainTests
     #endregion
 
     [Fact]
-    public void xxx()
+    public void StackThreeOntopEachOther_ShouldPass()
     {
         var service = new ImageSizeCheckerService();
-        var sizes = new string[] { "15 20", "10 10", "6 4", "20 1" };
+        var sizes = new string[] { "15 20", "10 10", "6 4", "15 1" };
 
         Assert.True(service.DoImagesFit(sizes));
     }
