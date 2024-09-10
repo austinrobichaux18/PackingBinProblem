@@ -3,16 +3,22 @@
 # What is this Application?
 This application was designed to check if all image sizes fit within the master image.  
 This is also considered the 2-dimensional Packing Bin problem.  
-The 3-dimensional version of this problem is used for packing shipping containers, mail carriers, and other logisitics.  
+It is considered a NP-Hard problem with no polynomial time complexity.  
+The 2-dimensional version of this problem has uses in fitting images on a page and fitting advertisements within time slots
+The 3-dimensional version of this problem has uses in packing shipping containers, mail carriers, and other logisitics.  
 It is similar to the 0/1 Knapsack problem.  
 
 # How to run this application
 To check a file, edit the "InputFile.txt" to contain data you wish to check and run the application. 
 The console will indicate pass or failure. 
+Alternatively, you can add test cases in the Tests project.  
 
 # Sources, Similar material, Educational 
 See relevant sources that helped me understand this problem.
 Ultimately none of which gave usable c# code, so I decided to create this application!  
+
+https://github.com/tahoe01/Bin-Packing
+
 https://en.wikipedia.org/wiki/Cutting_stock_problem  
 https://en.wikipedia.org/wiki/Bin_packing_problem  
 https://en.wikipedia.org/wiki/NP-hardness  

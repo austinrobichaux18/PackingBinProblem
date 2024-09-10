@@ -98,6 +98,15 @@ public class MainTests
     }
     #endregion
 
+    [Fact]
+    public void xxx()
+    {
+        var service = new ImageSizeCheckerService();
+        var sizes = new string[] { "15 20", "10 10", "6 4", "20 1" };
+
+        Assert.True(service.DoImagesFit(sizes));
+    }
+
     [Theory]
     [InlineData("FailingCases_Format.txt", false)]
     [InlineData("FailingCases.txt", false)]
