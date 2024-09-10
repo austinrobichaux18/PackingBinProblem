@@ -6,6 +6,8 @@ internal class OrderByArea : ISolution
     // look for all possible x,y coords in the boundry box such that if the top-left pixel is place at this location, the whole image can fit to the right and down
     // For each candidate of ^, we check if all coords of the body of the image is available
     // Place image if possible, otherwise repeat the above
+    // Note Upgrade: We could optimize and only check the 'walls', instead of the inteiror also,
+    //              since we only place blocks where they touch other blocks, however performance is fast enough for current test cases
     public bool DoImagesFit(Size boundry, Size[] images)
     {
         var ordered = images.OrderByDescending(img => img.Area).ToArray();
@@ -15,7 +17,7 @@ internal class OrderByArea : ISolution
         {
             var placed = false;
 
-            // Available starting spots that have enough room to fit the full image to the right, starting at the top-left most point of the image
+            // Available starting spots that have enough room to fit the full image to the right and down, starting at the top-left most point of the image
             for (var x = 0; x <= boundry.Width - image.Width; x++)
             {
                 for (var y = 0; y <= boundry.Height - image.Height; y++)
@@ -35,7 +37,7 @@ internal class OrderByArea : ISolution
 
             if (!placed)
             {
-                // Image doesnt fit
+                // Image doesnt fit anywhere
                 return false;
             }
         }
@@ -50,6 +52,7 @@ internal class OrderByArea : ISolution
             for (var j = y; j < y + image.Height; j++)
             {
                 // Check every grid square and make sure its available for the body of the image
+                // Note upgrade: change this to only check the 'walls' instead of the full body for performance optimzation
                 if (grid[i, j])
                 {
                     return false;

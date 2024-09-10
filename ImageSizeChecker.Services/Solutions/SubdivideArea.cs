@@ -6,8 +6,8 @@ internal class SubdivideArea : ISolution
     public SubdivideArea(SubdivideFavor favor) => _favor = favor;
     // Philosphy:
     // Order the images by largest area,
-    // When you place a rectangle, subdivide the remaining space into two more rectangles
-    // You will get a series of "empty space" rectangles that you can try to fill. 
+    // When you place a rectangle, subdivide the remaining space into two more rectangles, preferring the larger one be either vertical or horizontal.
+    // You will get a series of "empty space" rectangles (bins) that you can try to fill. 
     // This has an issue of not being able to re-merge two subdivided rectangles even though visually you can, but should preform quickly on the cases
     // that do qualify. 
     public bool DoImagesFit(Size boundry, Size[] images)
