@@ -132,6 +132,7 @@ public class MainTests
     [InlineData("FailingCases_Format.txt", false)]
     [InlineData("FailingCases.txt", false)]
     [InlineData("PassingCases.txt", true)]
+    [InlineData("EdgeCases.txt", true)]
     public void FromFile_BulkTestCases(string fileName, bool shouldPass)
     {
         // Note: Bulk test cases use "_" instead of newline to seperate entries so that we can fit multiple test cases in one file.
