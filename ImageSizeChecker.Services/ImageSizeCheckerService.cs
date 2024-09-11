@@ -39,9 +39,13 @@ public class ImageSizeCheckerService
     private bool DoImagesFit(Size boundry, Size[] sizes)
     {
         // Philosphy: 
-        // This problem's brute force method is likely n! time complexity or greater. It is not at all worth it to do brute force.
-        // There are several approximation algorithms that we opt to try
-        // and combine together in the case of failures to hopefully capture a decent approximation success decision
+        // We use a collection of approximation algorithms in hopes of achieving a well performing success result. 
+        // For each algorithm that fails, we move to the next. 
+        // Finally, we use a brute force algorithm as the final case.
+        // For sufficiently large and complex N images, the performance for the brute force case will likely be poor.
+        // Upgrade Note: If we were to add more algorithms,
+        // I would replace this else if set with a reflection call to grab all implementors of the ISolution interface and loop through them.
+        // I'd probably also add a priority level on the ISolution interface so that we can run some in priority compared to others. 
         if (new OrderByArea().DoImagesFit(boundry, sizes))
         {
             return true;
