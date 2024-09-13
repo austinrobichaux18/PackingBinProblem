@@ -35,6 +35,22 @@ internal class BruteForce : ISolution
                 images.Insert(i, size);
                 collage.RemoveImage(image);
             }
+            else
+            {
+                //Try to rotate the image and see if it fits
+                image = collage.TryPlaceImage(new Size(size.Height, size.Width));
+                if (image != null)
+                {
+                    images.RemoveAt(i);
+                    var nestedResult = Dfs(collage, images);
+                    if (nestedResult)
+                    {
+                        return true;
+                    }
+                    images.Insert(i, size);
+                    collage.RemoveImage(image);
+                }
+            }
             i++;
         }
         return false;
